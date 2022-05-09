@@ -6,14 +6,15 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "jest",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "test": "jest --verbose --coverage --coverageReporters='text-summary'"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-redux": "^8.0.1",
+    "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
@@ -35,6 +36,11 @@
     "vite": "^2.9.7"
   },
   "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "html"
+    ],
     "testEnvironment": "jsdom",
     "setupFilesAfterEnv": [
       "<rootDir>/jest-setup.ts"
@@ -43,7 +49,6 @@
       "src/**/*.{ts,tsx,js,jsx}",
       "!src/**/*.d.ts",
       "!src/main.tsx"
-
     ],
     "moduleNameMapper": {
       "\\.(css|less)$": "identity-obj-proxy"
