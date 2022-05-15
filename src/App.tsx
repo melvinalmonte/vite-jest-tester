@@ -5,13 +5,17 @@ import { increment } from "./features/counter/counterSlice";
 import { connect } from "react-redux";
 import { Nav } from "./components/nav";
 import { handleLogin, handleLogout } from "./features/login/loginSlice";
+import { fetchUser } from "./features/user/userSlice";
 
 type AppProps = {
   value: number;
   isLoggedIn: boolean;
+  userData: object[];
   increment: () => void;
   handleLogin: () => void;
   handleLogout: () => void;
+  fetchUser: () => void;
+  isLoading: string;
 };
 
 function App({
@@ -20,6 +24,9 @@ function App({
   handleLogin,
   handleLogout,
   isLoggedIn,
+  fetchUser,
+  userData,
+  isLoading,
 }: AppProps) {
   return (
     <>
@@ -37,6 +44,14 @@ function App({
             </button>
           </p>
           <p>counter value is: {value}</p>
+          <button type="button" id={"fetch-users"} onClick={fetchUser}>
+            Fetch User List
+          </button>
+          {isLoading === "loading" ? (
+            <pre>Fetching user list</pre>
+          ) : (
+            <pre>Fetched {userData.length} users</pre>
+          )}
         </header>
       </div>
     </>
@@ -44,10 +59,12 @@ function App({
 }
 
 function mapStateToProps(state: RootState) {
-  const { counter, login } = state;
+  const { counter, login, user } = state;
   return {
     value: counter.value,
     isLoggedIn: login.isLoggedIn,
+    userData: user.userData,
+    isLoading: user.status,
   };
 }
 
@@ -55,6 +72,7 @@ const mapDispatchToProps = {
   increment,
   handleLogin,
   handleLogout,
+  fetchUser,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
