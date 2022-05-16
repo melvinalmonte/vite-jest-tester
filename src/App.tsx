@@ -7,10 +7,34 @@ import { Nav } from "./components/nav";
 import { handleLogin, handleLogout } from "./features/login/loginSlice";
 import { fetchUser } from "./features/user/userSlice";
 
+type userDataTypes = {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  address: {
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+    geo: {
+      lat: string;
+      lng: string;
+    };
+  };
+  phone: string;
+  website: string;
+  company: {
+    name: string;
+    catchPhrase: string;
+    bs: string;
+  };
+};
+
 type AppProps = {
   value: number;
   isLoggedIn: boolean;
-  userData: object[];
+  userData: userDataTypes[];
   increment: () => void;
   handleLogin: () => void;
   handleLogout: () => void;
@@ -50,7 +74,31 @@ function App({
           {isLoading === "loading" ? (
             <pre>Fetching user list</pre>
           ) : (
-            <pre>Fetched {userData.length} users</pre>
+            <>
+              <pre>Fetched {userData.length} users</pre>
+              {userData.length > 0 && (
+                <table>
+                  <thead>
+                    <tr>
+                      <th>User ID</th>
+                      <th>Full Name</th>
+                      <th>Username</th>
+                      <th>Email</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {userData.map((user, index: number) => (
+                      <tr key={index}>
+                        <td>{user.id}</td>
+                        <td>{user.name}</td>
+                        <td>{user.username}</td>
+                        <td>{user.email}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </>
           )}
         </header>
       </div>

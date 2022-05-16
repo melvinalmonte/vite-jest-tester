@@ -105,4 +105,15 @@ describe("Simple working test", () => {
     );
     expect(await screen.findByText(/Fetched 1 users/i)).toBeInTheDocument();
   })
+  it('should test that we render a table with data from our mocked server', async() => {
+    const component = render(
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
+    await userEvent.click(
+      component.container.querySelector("#fetch-users") as HTMLInputElement
+    );
+    expect(await screen.findByText(/peter parker/i)).toBeInTheDocument();
+  })
 });
