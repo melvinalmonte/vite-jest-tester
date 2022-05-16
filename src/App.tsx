@@ -75,7 +75,7 @@ function App({
             <pre>Fetching user list</pre>
           ) : (
             <>
-              <pre>Fetched {userData.length} users</pre>
+              <pre>Number of records fetched: {userData.length}</pre>
               {userData.length > 0 && (
                 <table>
                   <thead>

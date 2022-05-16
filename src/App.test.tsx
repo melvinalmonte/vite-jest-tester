@@ -103,7 +103,7 @@ describe("Simple working test", () => {
     await userEvent.click(
       component.container.querySelector("#fetch-users") as HTMLInputElement
     );
-    expect(await screen.findByText(/Fetched 1 users/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Number of records fetched: 1/i)).toBeInTheDocument();
   })
   it('should test that we render a table with data from our mocked server', async() => {
     const component = render(
