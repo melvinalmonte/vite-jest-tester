@@ -1,4 +1,3 @@
-import React from "react";
 import "./App.css";
 import { RootState } from "./store";
 import { increment } from "./features/counter/counterSlice";

@@ -1,6 +1,7 @@
-import React from "react";
 import { render, screen, userEvent, waitFor } from "../../utils/test-utils";
 import { MyForm } from "./MyForm";
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 describe("Formik form sample test", () => {
   it("rendering and submitting a basic Formik form", async () => {
@@ -13,7 +14,7 @@ describe("Formik form sample test", () => {
     await user.type(screen.getByLabelText(/email/i), "john.dee@someemail.com");
 
     await user.click(screen.getByRole("button", { name: /submit/i }));
-
+    await sleep(500);
     await waitFor(() =>
       expect(handleSubmit).toHaveBeenCalledWith({
         email: "john.dee@someemail.com",

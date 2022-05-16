@@ -1,19 +1,19 @@
 import React from "react";
 type InputProps = {
-    label: string;
-    name: string;
-    error?: string | undefined;
+  label: string;
+  name: string;
+  error?: string | undefined;
 } & React.DetailedHTMLProps<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
-    >;
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
 
 export const Input = ({ label, name, error, ...props }: InputProps) => {
-    return (
-        <>
-            <label htmlFor={name}>{label}</label>
-            <input name={name} id={name} {...props} />
-            {error ? <span role="alert">{error}</span> : null}
-        </>
-    );
+  return (
+    <>
+      <label htmlFor={name}>{label}</label>
+      <input name={name} id={name} {...props} />
+      {error ? <span role="alert">{error}</span> : null}
+    </>
+  );
 };

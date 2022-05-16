@@ -1,16 +1,11 @@
-// myForm.js
-import React from "react";
 import { Formik, Field, Form } from "formik";
-
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 type myFormProps = {
   onSubmit: (values: object) => null;
 };
 
 export const MyForm = ({ onSubmit }: myFormProps) => {
-  const handleSubmit = async (values: object) => {
-    await sleep(500);
+  const handleSubmit = (values: object) => {
     onSubmit(values);
   };
 

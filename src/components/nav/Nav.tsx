@@ -1,5 +1,3 @@
-import React from "react";
-
 type NavProps = {
   isLoggedIn: boolean;
   onLogIn: () => void;

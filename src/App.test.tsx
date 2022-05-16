@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen, userEvent } from "./utils/test-utils";
 import App from "./App";
 import { Provider } from "react-redux";
@@ -41,16 +40,16 @@ export const handlers = [
   }),
 ];
 
-const server = setupServer(...handlers)
+const server = setupServer(...handlers);
 
 // Enable API mocking before tests.
-beforeAll(() => server.listen())
+beforeAll(() => server.listen());
 
 // Reset any runtime request handlers we may add during the tests.
-afterEach(() => server.resetHandlers())
+afterEach(() => server.resetHandlers());
 
 // Disable API mocking after the tests are done.
-afterAll(() => server.close())
+afterAll(() => server.close());
 
 describe("Simple working test", () => {
   it("the title is visible", () => {
@@ -94,7 +93,7 @@ describe("Simple working test", () => {
     );
     expect(await screen.findByText(/Login/i)).toBeInTheDocument();
   });
-  it('should test that we fetch data from our mocked server', async() => {
+  it("should test that we fetch data from our mocked server", async () => {
     const component = render(
       <Provider store={store}>
         <App />
@@ -103,9 +102,11 @@ describe("Simple working test", () => {
     await userEvent.click(
       component.container.querySelector("#fetch-users") as HTMLInputElement
     );
-    expect(await screen.findByText(/Number of records fetched: 1/i)).toBeInTheDocument();
-  })
-  it('should test that we render a table with data from our mocked server', async() => {
+    expect(
+      await screen.findByText(/Number of records fetched: 1/i)
+    ).toBeInTheDocument();
+  });
+  it("should test that we render a table with data from our mocked server", async () => {
     const component = render(
       <Provider store={store}>
         <App />
@@ -115,5 +116,5 @@ describe("Simple working test", () => {
       component.container.querySelector("#fetch-users") as HTMLInputElement
     );
     expect(await screen.findByText(/peter parker/i)).toBeInTheDocument();
-  })
+  });
 });
