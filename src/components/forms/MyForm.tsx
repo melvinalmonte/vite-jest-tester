@@ -1,13 +1,17 @@
 import { Formik, Field, Form } from "formik";
+import { useCallback } from "react";
 
 type myFormProps = {
   onSubmit: (values: object) => null;
 };
 
 export const MyForm = ({ onSubmit }: myFormProps) => {
-  const handleSubmit = (values: object) => {
-    onSubmit(values);
-  };
+  const handleSubmit = useCallback(
+    (values: object) => {
+      onSubmit(values);
+    },
+    [onSubmit]
+  );
 
   return (
     <div>

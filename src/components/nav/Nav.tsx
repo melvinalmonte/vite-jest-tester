@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 type NavProps = {
   isLoggedIn: boolean;
   onLogIn: () => void;
@@ -22,4 +24,4 @@ const Nav = ({ isLoggedIn, onLogIn, onLogOut }: NavProps) => {
   );
 };
 
-export default Nav;
+export default memo(Nav);
