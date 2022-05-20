@@ -1,7 +1,5 @@
 import { render, screen, userEvent } from "./utils/test-utils";
 import App from "./App";
-import { Provider } from "react-redux";
-import store from "./store";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
 
@@ -53,52 +51,32 @@ afterAll(() => server.close());
 
 describe("Simple working test", () => {
   it("the title is visible", () => {
-    render(
-      <Provider store={store}>
-        <App />
-      </Provider>
-    );
+    render(<App />);
     expect(screen.getByText(/Hello testing playground!/i)).toBeInTheDocument();
   });
   it("should increment count on click", async () => {
-    const component = render(
-      <Provider store={store}>
-        <App />
-      </Provider>
-    );
+    const component = render(<App />);
     await userEvent.click(
       component.container.querySelector("#increaseCounter") as HTMLInputElement
     );
     expect(await screen.findByText(/counter value is: 1/i)).toBeInTheDocument();
   });
   it("should change nav button from login to logout", async () => {
-    const component = render(
-      <Provider store={store}>
-        <App />
-      </Provider>
-    );
+    const component = render(<App />);
     await userEvent.click(
       component.container.querySelector("#login") as HTMLInputElement
     );
     expect(await screen.findByText(/Logout/i)).toBeInTheDocument();
   });
   it("should change nav button from logout to login", async () => {
-    const component = render(
-      <Provider store={store}>
-        <App />
-      </Provider>
-    );
+    const component = render(<App />);
     await userEvent.click(
       component.container.querySelector("#logout") as HTMLInputElement
     );
     expect(await screen.findByText(/Login/i)).toBeInTheDocument();
   });
   it("should test that we fetch data from our mocked server", async () => {
-    const component = render(
-      <Provider store={store}>
-        <App />
-      </Provider>
-    );
+    const component = render(<App />);
     await userEvent.click(
       component.container.querySelector("#fetch-users") as HTMLInputElement
     );
@@ -107,11 +85,7 @@ describe("Simple working test", () => {
     ).toBeInTheDocument();
   });
   it("should test that we render a table with data from our mocked server", async () => {
-    const component = render(
-      <Provider store={store}>
-        <App />
-      </Provider>
-    );
+    const component = render(<App />);
     await userEvent.click(
       component.container.querySelector("#fetch-users") as HTMLInputElement
     );
