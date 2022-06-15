@@ -17,7 +17,7 @@ import { RootState } from "../store";
 interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
   preloadedState?: PreloadedState<RootState>;
   // todo: find correct store type
-  store?: any
+  store?: any;
 }
 
 const customRender = (
@@ -25,6 +25,8 @@ const customRender = (
   {
     preloadedState,
     store = configureStore({
+      middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({ serializableCheck: false }),
       reducer: {
         counter: counterReducer,
         login: loginReducer,
