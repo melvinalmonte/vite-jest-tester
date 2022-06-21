@@ -4,6 +4,13 @@ import { MyForm } from "./MyForm";
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 describe("Formik form sample test", () => {
+  it("renders the form without crashing", () => {
+    render(<MyForm onSubmit={() => null} />);
+    expect(screen.getByLabelText(/First Name/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/Last Name/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/Email/i)).toBeInTheDocument()
+
+  });
   it("rendering and submitting a basic Formik form", async () => {
     const handleSubmit = jest.fn();
     render(<MyForm onSubmit={handleSubmit} />);
