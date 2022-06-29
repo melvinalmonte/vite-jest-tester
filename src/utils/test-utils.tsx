@@ -2,12 +2,12 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "../features/user/userSlice";
-import counterReducer from "../features/counter/counterSlice";
-import loginReducer from "../features/login/loginSlice";
 import { Provider } from "react-redux";
 import type { RenderOptions } from "@testing-library/react";
 import type { PreloadedState } from "@reduxjs/toolkit";
+import userReducer from "../features/user/userSlice";
+import counterReducer from "../features/counter/counterSlice";
+import loginReducer from "../features/login/loginSlice";
 import { RootState } from "../store";
 
 // This type interface extends the default options for render from RTL, as well

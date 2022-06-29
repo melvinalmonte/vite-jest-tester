@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
-import { render, screen, fireEvent } from "../../utils/test-utils";
 import { Input } from "./Input";
+import { render, screen, fireEvent } from "../../utils/test-utils";
 
 describe("Input", () => {
   it("should render the input", () => {

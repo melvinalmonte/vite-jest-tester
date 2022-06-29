@@ -1,5 +1,5 @@
-import { render, screen } from "../../utils/test-utils";
 import Nav from "./Nav";
+import { render, screen } from "../../utils/test-utils";
 
 describe("Navbar working test", () => {
   it("Renders Navbar with login button", () => {
@@ -9,9 +9,7 @@ describe("Navbar working test", () => {
     expect(screen.getByText(/Login/i)).toBeInTheDocument();
   });
   it("Renders Navbar with logout button", () => {
-    render(
-      <Nav isLoggedIn={true} onLogIn={() => null} onLogOut={() => null} />
-    );
+    render(<Nav isLoggedIn onLogIn={() => null} onLogOut={() => null} />);
     expect(screen.getByText(/Logout/i)).toBeInTheDocument();
   });
 });

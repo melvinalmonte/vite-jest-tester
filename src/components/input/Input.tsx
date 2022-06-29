@@ -1,4 +1,5 @@
 import React from "react";
+
 type InputProps = {
   label: string;
   name: string;

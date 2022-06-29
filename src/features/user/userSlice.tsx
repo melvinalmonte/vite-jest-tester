@@ -1,4 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import axios from "axios";
 
 const userApi = () =>
@@ -17,16 +18,9 @@ const initialState = {
   status: "idle",
 };
 
-type initialStateProps = {
-  user: {
-    userData: object[];
-    status: string;
-  };
-};
-
 const userSlice = createSlice({
   name: "user",
-  initialState: initialState,
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchUser.pending, (state) => {

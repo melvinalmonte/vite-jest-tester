@@ -1,3 +1,5 @@
+import { Button, Flex, Spacer } from "@chakra-ui/react";
+
 import { memo } from "react";
 
 type NavProps = {
@@ -8,19 +10,14 @@ type NavProps = {
 
 const Nav = ({ isLoggedIn, onLogIn, onLogOut }: NavProps) => {
   return (
-    <nav className="menu">
-      <div>
-        {isLoggedIn ? (
-          <button id={"logout"} onClick={onLogOut}>
-            Logout
-          </button>
-        ) : (
-          <button id={"login"} onClick={onLogIn}>
-            Login
-          </button>
-        )}
-      </div>
-    </nav>
+    <Flex as="nav" p={4}>
+      <Spacer />
+      {isLoggedIn ? (
+        <Button onClick={onLogOut}>Logout</Button>
+      ) : (
+        <Button onClick={onLogIn}>Login</Button>
+      )}
+    </Flex>
   );
 };
 

@@ -1,7 +1,7 @@
-import { render, screen, userEvent } from "./utils/test-utils";
-import App from "./App";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
+import { render, screen, userEvent } from "./utils/test-utils";
+import App from "./App";
 
 // We use a mock object to be our response
 const mockedResponse = [
