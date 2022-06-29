@@ -6,6 +6,6 @@
     "jest --bail --findRelatedTests"
   ],
   "./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-    "prettier --write"
+    "prettier-eslint --write"
   ]
 }
